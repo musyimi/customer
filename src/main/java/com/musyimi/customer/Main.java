@@ -1,5 +1,7 @@
 package com.musyimi.customer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.boot.SpringApplication;
@@ -8,12 +10,36 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 
 public class Main {
+	
+	// db
+	private static List<Customer> customers;
+	
+	static {
+		customers = new ArrayList<>(); 
+		
+		Customer poza = new Customer(
+				1,
+				"Poza",
+				"Umeze",
+				"pozaumeze@gmail.com"
+				);
+		customers.add(poza);
+		
+		Customer mena = new Customer(
+				2,
+				"Wena",
+				"Mena",
+				"wenamena@gmail.com"
+				);
+		customers.add(mena);
+	}
 
 	public static void main(String[] args) {
+		System.out.println(customers);
 		SpringApplication.run(Main.class, args);
 	}
 	
-	class Customer{
+	 static class Customer{
 		private Integer id;
 		private String first_name;
 		private String last_name;
