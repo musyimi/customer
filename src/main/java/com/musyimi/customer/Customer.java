@@ -1,7 +1,8 @@
-package customer;
+package com.musyimi.customer;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,8 +22,14 @@ import jakarta.persistence.SequenceGenerator;
 			generator = "customer_id_sequence"
 			)
 	private Integer id;
+	
+	@Column(nullable = false)
 	private String first_name;
+	
+	@Column(nullable = false)
 	private String last_name;
+	
+	@Column(nullable = false)
 	private String email;
 
 	

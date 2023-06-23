@@ -1,4 +1,4 @@
-package customer;
+package com.musyimi.customer;
 
 import java.util.List;
 import java.util.Optional;

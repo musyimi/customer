@@ -1,4 +1,4 @@
-package customer;
+package com.musyimi.customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class CustomerDataAccessService implements CustomerDao {
+@Repository("list")
+public class CustomerListDataAccessService implements CustomerDao {
 	
 
 	private static List<Customer> customers; 
