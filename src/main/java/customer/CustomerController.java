@@ -13,7 +13,6 @@ public class CustomerController {
 	private final CustomerService customerService;
 	
 	public CustomerController(CustomerService customerService) {
-		super();
 		this.customerService = customerService;
 	}
 

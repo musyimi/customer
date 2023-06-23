@@ -2,12 +2,14 @@ package customer;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class CustomerService {
 	
 	private final CustomerDao customerDao;
 	
 	public CustomerService(CustomerDao customerDao) {
-		super();
 		this.customerDao = customerDao;
 	}
 
