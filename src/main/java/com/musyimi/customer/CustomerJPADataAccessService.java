@@ -23,7 +23,7 @@ public class CustomerJPADataAccessService implements CustomerDao {
 	@Override
 	public Optional<Customer> selectCustomerById(Integer Id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return customerRepository.findById(Id);
 	}
 
 }
