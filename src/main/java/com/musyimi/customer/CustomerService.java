@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.musyimi.exception.DuplicateResourceException;
+
 @Service
 public class CustomerService {
 	
@@ -26,5 +28,13 @@ public class CustomerService {
 					
 		  
 		}
+	
+	public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
+		String email = customerRegistrationRequest.email();
+		if (customerDao.existsPersonWithEmail(email)) {
+			throw new DuplicateResourceException("email already exists");
+		}
+				}
+	
 
 }
