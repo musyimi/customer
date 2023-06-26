@@ -34,6 +34,12 @@ public class CustomerJPADataAccessService implements CustomerDao {
 	}
 
 	@Override
+	public void updateCustomer(Customer update) {
+		// TODO Auto-generated method stub
+		customerRepository.save(update);
+	}
+
+	@Override
 	public boolean existsPersonWithId(Integer id) {
 		// TODO Auto-generated method stub
 		return customerRepository.existsCustomerById(id);

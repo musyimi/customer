@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.musyimi.exception.DuplicateResourceException;
+import com.musyimi.exception.RequestValidationException;
 import com.musyimi.exception.ResourceNotFoundException;
 
 @Service
@@ -52,6 +53,41 @@ public class CustomerService {
 					);
 		}
 		customerDao.deleteCustomerById(customerId);
+	}
+	
+	public void updateCustomer(Integer customerId,
+			CustomerUpdateRequest updateRequest) {
+		Customer customer = getCustomer(customerId);
+		
+		boolean changes = false;
+		
+		if (updateRequest.first_name() != null && !updateRequest.first_name().equals(customer.getFirst_name())) {
+			 customer.setFirst_name(updateRequest.first_name());
+			 changes = true;
+		}
+		  
+		
+		if (updateRequest.last_name() != null && !updateRequest.last_name().equals(customer.getLast_name())) {
+			 customer.setLast_name(updateRequest.last_name());
+			 changes = true;
+		}
+		
+		if (updateRequest.email() != null && !updateRequest.email().equals(customer.getEmail())) {
+			if (customerDao.existsPersonWithEmail(updateRequest.email())) {
+				throw new DuplicateResourceException(
+						"email already taken"
+						);
+			}
+			
+			customer.setEmail(updateRequest.email());
+			 changes = true;
+		}
+		
+		if (!changes) {
+			throw new RequestValidationException("No data changes found");
+		}
+		
+		customerDao.updateCustomer(customer);
 	}
 	
 

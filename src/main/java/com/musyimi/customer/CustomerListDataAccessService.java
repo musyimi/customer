@@ -47,6 +47,12 @@ public class CustomerListDataAccessService implements CustomerDao {
 	}
 
 	@Override
+	public void updateCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		customers.add(customer);
+	}
+
+	@Override
 	public boolean existsPersonWithId(Integer id) {
 		// TODO Auto-generated method stub
 		return customers.stream()
