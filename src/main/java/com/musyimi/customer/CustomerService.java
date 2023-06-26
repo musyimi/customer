@@ -34,6 +34,14 @@ public class CustomerService {
 		if (customerDao.existsPersonWithEmail(email)) {
 			throw new DuplicateResourceException("email already exists");
 		}
+		customerDao.insertCustomer(
+				new Customer(
+						customerRegistrationRequest.first_name(),
+						customerRegistrationRequest.last_name(),
+						customerRegistrationRequest.email()
+						
+						)
+				);
 				}
 	
 
