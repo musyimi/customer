@@ -33,7 +33,7 @@ public class Main {
 					);
 			
 			List<Customer> customers = List.of(poza, mena);
-			customerRepository.saveAll(customers);
+			//customerRepository.saveAll(customers);
 			
 		};
 	}
