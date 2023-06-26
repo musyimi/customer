@@ -34,6 +34,18 @@ public class CustomerJPADataAccessService implements CustomerDao {
 	}
 
 	@Override
+	public boolean existsPersonWithId(Integer id) {
+		// TODO Auto-generated method stub
+		return customerRepository.existsCustomerById(id);
+	}
+
+	@Override
+	public void deleteCustomerById(Integer customerId) {
+		// TODO Auto-generated method stub
+		customerRepository.deleteById(customerId);
+	}
+
+	@Override
 	public boolean existsPersonWithEmail(String email) {
 		// TODO Auto-generated method stub
 		return customerRepository.existsCustomerByEmail(email);

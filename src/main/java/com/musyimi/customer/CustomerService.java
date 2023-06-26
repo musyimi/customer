@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.musyimi.exception.DuplicateResourceException;
+import com.musyimi.exception.ResourceNotFoundException;
 
 @Service
 public class CustomerService {
@@ -43,6 +44,15 @@ public class CustomerService {
 						)
 				);
 				}
+	
+	public void deleteCustomerById(Integer customerId) {
+		if(!customerDao.existsPersonWithId(customerId)) {
+			throw new ResourceNotFoundException(
+					"customer with id not found".formatted(customerId)
+					);
+		}
+		customerDao.deleteCustomerById(customerId);
+	}
 	
 
 }

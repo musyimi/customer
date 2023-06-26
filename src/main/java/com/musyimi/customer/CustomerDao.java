@@ -9,5 +9,7 @@ public interface CustomerDao {
 	Optional<Customer> selectCustomerById(Integer Id);
 	void insertCustomer(Customer customer);
 	boolean existsPersonWithEmail(String email);
+	boolean existsPersonWithId(Integer id);
+	void deleteCustomerById(Integer customerId);
 }
  

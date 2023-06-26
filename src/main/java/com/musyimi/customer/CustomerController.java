@@ -2,6 +2,7 @@ package com.musyimi.customer;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,13 @@ public class CustomerController {
 	public void registerCustomer(
 			@RequestBody CustomerRegistrationRequest request) {
 		customerService.addCustomer(request);
+	}
+	
+	@DeleteMapping("{customerId}")
+	public void deleteCustomer(
+			@PathVariable("customerId") Integer customerId
+			) {
+		customerService.deleteCustomerById(customerId);
 	}
 
 }
