@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.github.javafaker.Faker;
 import com.musyimi.customer.Customer;
 import com.musyimi.customer.CustomerRepository;
 
@@ -20,20 +21,13 @@ public class Main {
 	CommandLineRunner runner(CustomerRepository customerRepository) {
 		
 		return args -> {
-			Customer poza = new Customer(
-					"alas",
-					"bro",
-					"alasbro@gmail.com"
+			Faker faker = new Faker();
+			Customer customer = new Customer(
+					faker.name().firstName(),
+					faker.name().lastName(),
+					faker.internet().safeEmailAddress()
 					);
-			
-			Customer mena = new Customer(
-					"miw",
-					"wiw",
-					"miwiwi@gmail.com"
-					);
-			
-			List<Customer> customers = List.of(poza, mena);
-			customerRepository.saveAll(customers);
+			customerRepository.save(customer);
 			
 		};
 	}
