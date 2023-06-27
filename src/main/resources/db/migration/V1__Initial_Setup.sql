@@ -1,6 +1,6 @@
 CREATE TABLE customer (
-   id BIGSERIAL PRIMARY KEY,
-   first_name TEXT NOT NULL,
+   id INT DEFAULT nextval('customer_id_seq') PRIMARY KEY,
+   first_name TEXT not null,
    last_name TEXT NOT NULL,
-   email TEXT NOT NULL
+   email TEXT UNIQUE NOT NULL
 );

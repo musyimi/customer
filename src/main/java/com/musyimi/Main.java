@@ -21,19 +21,19 @@ public class Main {
 		
 		return args -> {
 			Customer poza = new Customer(
-					"Poza",
-					"Umeze",
-					"pozaumeze@gmail.com"
+					"alas",
+					"bro",
+					"alasbro@gmail.com"
 					);
 			
 			Customer mena = new Customer(
-					"Wena",
-					"Mena",
-					"wenamena@gmail.com"
+					"miw",
+					"wiw",
+					"miwiwi@gmail.com"
 					);
 			
 			List<Customer> customers = List.of(poza, mena);
-			//customerRepository.saveAll(customers);
+			customerRepository.saveAll(customers);
 			
 		};
 	}
