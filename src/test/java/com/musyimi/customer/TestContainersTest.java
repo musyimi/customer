@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -17,6 +19,19 @@ public class TestContainersTest {
 			.withDatabaseName("customer-dao-unit-test")
 			.withUsername("musyimi")
 			.withPassword("password");
+	
+	@DynamicPropertySource
+	private static void registerDataSourceProperties(DynamicPropertyRegistry registry) {
+		registry.add(
+				"Spring.datasource.url",
+				postgreSQLContainer::getJdbcUrl);
+		registry.add(
+				"Spring.datasource.username",
+				postgreSQLContainer::getUsername);
+		registry.add(
+				"Spring.datasource.password",
+				postgreSQLContainer::getPassword);
+	}
 	
 	@Test
 	void canStartPostgresDB() {
